@@ -3,16 +3,20 @@ const ProductTablePanel = ({ products, filterText, onlyStock }) => {
     const row = []
 
     products.forEach(prod => {
+        if (prod.name.toLowerCase().indexOf(filterText.toLowerCase()) == -1) {
+            return;
+        }
+
         if (prod.category !== lastCategory) {
             row.push(
-                <tr>
+                <tr key={prod.category}>
                     <th colSpan="2">{prod.category}</th>
                 </tr>
             )
         }
 
         row.push(
-            <tr>
+            <tr key={prod.name}>
                 <td>
                     {prod.stocked ?
                         prod.name :
