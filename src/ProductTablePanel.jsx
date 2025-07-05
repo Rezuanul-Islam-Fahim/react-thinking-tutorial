@@ -1,4 +1,30 @@
 const ProductTablePanel = ({ products, filterText, onlyStock }) => {
+    let lastCategory
+    const row = []
+
+    products.forEach(prod => {
+        if (prod.category !== lastCategory) {
+            row.push(
+                <tr>
+                    <th colSpan="2">{prod.category}</th>
+                </tr>
+            )
+        }
+
+        row.push(
+            <tr>
+                <td>
+                    {prod.stocked ?
+                        prod.name :
+                        <span style={{ color: "red" }}>{prod.name}</span>}
+                </td>
+                <td>{prod.price}</td>
+            </tr>
+        )
+
+        lastCategory = prod.category
+    })
+
     return (
         <table>
             <thead>
@@ -7,14 +33,7 @@ const ProductTablePanel = ({ products, filterText, onlyStock }) => {
                     <th>Price</th>
                 </tr>
             </thead>
-            <tbody>
-                {products.map(v => (
-                    <tr>
-                        <td>{ v.name }</td>
-                        <td>{ v.price }</td>
-                    </tr>
-                ))}
-            </tbody>
+            <tbody>{row}</tbody>
         </table>
     );
 }
