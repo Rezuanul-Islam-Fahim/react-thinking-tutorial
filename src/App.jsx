@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchPanel from "./SearchPanel";
+import ProductTablePanel from "./ProductTablePanel";
 
 const App = () => {
   const [filterText, setFilterText] = useState('');
@@ -14,11 +15,17 @@ const App = () => {
   ];
 
   return (
-    <SearchPanel
-      filterText={filterText}
-      onChangeFilterText={setFilterText}
-      onlyStock={onlyStock}
-      setOnlyStock={setOnlyStock} />
+    <>
+      <SearchPanel
+        filterText={filterText}
+        onChangeFilterText={setFilterText}
+        onlyStock={onlyStock}
+        setOnlyStock={setOnlyStock} />
+      <ProductTablePanel
+        products={PRODUCTS}
+        filterText={filterText}
+        onlyStock={onlyStock} />
+    </>
   );
 }
 

@@ -8,7 +8,7 @@ const SearchPanel = ({
         <form onSubmit={(e) => e.preventDefault()}>
             <input
                 type="text"
-                placeholder="Enter your input here..."
+                placeholder="Search..."
                 value={filterText}
                 onChange={(e) => onChangeFilterText(e.target.value)} />
             <br />
@@ -17,6 +17,8 @@ const SearchPanel = ({
                 value={onlyStock}
                 onChange={(e) => onChangeOnlyStock(e.target.checked)} />
             {' '} Only show products in stock
+            <br />
+            <br />
         </form>
     );
 }
