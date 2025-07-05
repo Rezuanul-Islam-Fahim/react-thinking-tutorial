@@ -20,7 +20,7 @@ const App = () => {
         filterText={filterText}
         onChangeFilterText={setFilterText}
         onlyStock={onlyStock}
-        setOnlyStock={setOnlyStock} />
+        onChangeOnlyStock={setOnlyStock} />
       <ProductTablePanel
         products={PRODUCTS}
         filterText={filterText}

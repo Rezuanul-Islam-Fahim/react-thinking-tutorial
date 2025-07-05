@@ -4,8 +4,10 @@ const ProductTablePanel = ({ products, filterText, onlyStock }) => {
 
     products.forEach(prod => {
         if (prod.name.toLowerCase().indexOf(filterText.toLowerCase()) == -1) {
-            return;
+            return
         }
+
+        if (onlyStock && !prod.stocked) return
 
         if (prod.category !== lastCategory) {
             row.push(
